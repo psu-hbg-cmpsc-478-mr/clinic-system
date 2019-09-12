@@ -1,0 +1,26 @@
+Appoitment system for any appoitment based company (medical)
+
+need:
+-Calendar
+-Time slots
+-Forms for collection customer data
+-Notification 24 hours before appointment
+-Schedule appointment must be 24 hours before actual appoitment
+-Website
+-Print out schedule for days
+-Modify appointments for users
+-If can set up recurrig appointments
+-After appointment, ask for feedback
+-hour appointments ONLY
+-account for surgeons lunch
+
+
+
+IMPLEMENTATIOn
+we must implement:
+client: moving truck company
+1. search truck availability by serial #
+2. GUI - Task based GUI. From, to, current status, weight of freight, type of move 
+3. Special accommodations
+4. NO CLIENT SIDE
+5. 
