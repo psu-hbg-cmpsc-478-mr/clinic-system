@@ -11,22 +11,24 @@
 
 @if (SignInManager.IsSignedIn(User) && false) // TODO: re-enable sign-in restrictions.
 {
-
+    
 }
 else
 {
     <div class="container-fluid">
-        <img src="~/images/banner.svg" alt="Welcome to H & B Clinic" class="img-responsive" 
-             style="width: 100%;"/>
+        <img src="~/images/banner.svg" alt="Welcome to H & B Clinic" class="img-responsive"
+             style="width: 100%;" />
     </div>
     <div class="alert-warning text-center">
         <h2>
-            Click <a>here</a> to login and view appointment information.
+            Click <a asp-area="Identity" asp-page="/Account/Login">here</a>
+            to log in and view appointment information.
         </h2>
     </div>
     <div class="alert-link text-center">
         <h3>
-            Don't have an account? Click <a>here</a> to make one.
+            Don't have an account? Click <a asp-area="Identity" asp-page="/Account/Register">here</a>
+            to make one.
         </h3>
     </div>
 }
