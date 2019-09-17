@@ -4,7 +4,36 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="row">
+        <h3>Welcome, @User.Identity.Name, to H &amp; B Clinic.</h3>
+    </div>
+    <div class="row">
+        <h4>TODO: CALENDAR</h4>
+    </div>
+}
+else
+{
+    <div class="container-fluid">
+        <img src="~/images/banner.svg" alt="Welcome to H & B Clinic" class="img-responsive"
+             style="width: 100%;" />
+    </div>
+    <div class="alert-warning text-center">
+        <h3>
+            Click <a asp-area="Identity" asp-page="/Account/Login">here</a>
+            to log in and view appointment information.
+        </h3>
+    </div>
+    <div class="alert-link text-center">
+        <h4>
+            Don't have an account? Click <a asp-area="Identity" asp-page="/Account/Register">here</a>
+            to make one.
+        </h4>
+    </div>
+}
