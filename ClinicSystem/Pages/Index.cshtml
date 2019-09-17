@@ -9,9 +9,20 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-@if (SignInManager.IsSignedIn(User) && false) // TODO: re-enable sign-in restrictions.
+@if (SignInManager.IsSignedIn(User))
 {
-    
+    <div class="row">
+        <h3>Welcome, @User.Identity.Name, to H &amp; B Clinic.</h3>
+        <div class="alert-success">
+            You have no upcoming appointments.
+        </div>
+    </div>
+    <div class="row">
+        
+    </div>
+    <div class="row">
+        <h4>TODO: CALENDAR</h4>
+    </div>
 }
 else
 {
@@ -20,16 +31,16 @@ else
              style="width: 100%;" />
     </div>
     <div class="alert-warning text-center">
-        <h2>
+        <h3>
             Click <a asp-area="Identity" asp-page="/Account/Login">here</a>
             to log in and view appointment information.
-        </h2>
+        </h3>
     </div>
     <div class="alert-link text-center">
-        <h3>
+        <h4>
             Don't have an account? Click <a asp-area="Identity" asp-page="/Account/Register">here</a>
             to make one.
-        </h3>
+        </h4>
     </div>
 }
 
