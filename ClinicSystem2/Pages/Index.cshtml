@@ -11,11 +11,25 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <div class="row">
-        <h3>Welcome, @User.Identity.Name, to H &amp; B Clinic.</h3>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <h4>Welcome, @User.Identity.Name, to H &amp; B Clinic.</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-success">
+                You have no holds or alerts on your account.
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <h4>TODO: CALENDAR</h4>
+    <div class="card">
+        <div class="card-header">
+            <h4>Calendar</h4>
+        </div>
+        <div class="card-body">
+            TODO: Add an interactive calendar widget.
+        </div>
     </div>
 }
 else
