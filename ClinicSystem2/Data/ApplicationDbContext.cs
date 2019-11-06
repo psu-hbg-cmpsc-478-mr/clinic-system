@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ClinicSystem2.Models;
 
 namespace ClinicSystem2.Data
 {
@@ -12,5 +13,6 @@ namespace ClinicSystem2.Data
             : base(options)
         {
         }
+        public DbSet<ClinicSystem2.Models.Appointment> Appointment { get; set; }
     }
 }
