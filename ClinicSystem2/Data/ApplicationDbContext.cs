@@ -13,6 +13,7 @@ namespace ClinicSystem2.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            // blah
         }
         public DbSet<ClinicSystem2.Models.Appointment> Appointment { get; set; }
         public DbSet<ClinicSystem2.Models.Role> Role { get; set; }
