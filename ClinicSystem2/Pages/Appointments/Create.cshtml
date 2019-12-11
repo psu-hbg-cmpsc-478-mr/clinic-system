@@ -5,6 +5,10 @@
     ViewData["Title"] = "Create";
 }
 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject HomeController Home
+
 <h1>Create</h1>
 
 <h4>Appointment</h4>
@@ -15,7 +19,15 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Appointment.Patient" class="control-label"></label>
-                <input asp-for="Appointment.Patient" class="form-control" />
+                @if (Home.IsClient(User))
+                {
+                    <input asp-for="Appointment.Patient" class="form-control" disabled="disabled" />
+                }
+                else
+                {
+                    <input asp-for="Appointment.Patient" class="form-control" />
+                }
+
                 <span asp-validation-for="Appointment.Patient" class="text-danger"></span>
             </div>
             <div class="form-group">

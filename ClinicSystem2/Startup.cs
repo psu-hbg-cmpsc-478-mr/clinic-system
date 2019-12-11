@@ -33,6 +33,7 @@ namespace ClinicSystem2
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<HomeController>();
 
             services.AddRazorPages();
         }

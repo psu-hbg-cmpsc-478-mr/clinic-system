@@ -14,5 +14,10 @@ namespace ClinicSystem2.Models
         public DateTime End { get; set; }
         public string Reason { get; set; }
         public string Goals { get; set; }
+
+        public override string ToString()
+        {
+            return $"At {Start} with Doctor {Doctor} for {Reason}";
+        }
     }
 }

@@ -8,6 +8,7 @@
 
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@inject HomeController Home
 
 @if (SignInManager.IsSignedIn(User))
 {
@@ -16,24 +17,76 @@
             <h4>Welcome, @User.Identity.Name, to H &amp; B Clinic.</h4>
         </div>
         <div class="card-body">
-            <div class="alert alert-success">
-                You have no holds or alerts on your account.
-            </div>
+            @if (Home.IsClient(User))
+            {
+                <div class="alert alert-success">
+                    You have no holds or alerts on your account.
+                </div>
+            }
+            else if (Home.IsDoctor(User))
+            {
+                <div class="alert alert-warning">
+                    You are accessing patient information and records as a registered doctor.
+                    If you are not the owner of this account, please log out immediately
+                    under penalty of law.
+                </div>
+            }
+            else if (Home.IsStaff(User))
+            {
+                <div class="alert alert-warning">
+                    You are accessing patient information and records as a
+                    registered staff member.
+                    If you are not the owner of this account, please log out immediately
+                    under penalty of law.
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    Your account has not been activated by a member of clinic staff yet.
+                    Please contact staff for help.
+                </div>
+            }
         </div>
     </div>
+    <br />
     <div class="card">
         <div class="card-header">
             <h4>Appointments</h4>
             <div class="row">
-                <div class="col-sm"><a href="/Appointments/Create" class="btn btn-primary btn-block">Add</a></div>
-                <div class="col-sm"><a href="/Appointments/Index" class="btn btn-secondary btn-block">Reschedule</a></div>
-                <div class="col-sm"><a href="/Appointments/Index" class="btn btn-danger btn-block">Cancel</a></div>
+                <div class="col-sm"><a href="/Appointments/Index" class="btn btn-primary btn-block">View/Edit Appointments</a></div>
+                <div class="col-sm"><a href="/Appointments/Create" class="btn btn-success btn-block">Add</a></div>
             </div>
         </div>
         <div class="card-body">
-            TODO: Add an interactive calendar widget.
+            @if (Home.IsClient(User))
+            {
+                var next = Home.GetNextAppointmentForClient(User);
+                if (next != null)
+                {
+                    <h5>Your next appointment:</h5>
+                    <a>@next.ToString()</a>
+                }
+                else
+                {
+                    <h5>You have no upcoming appointments.</h5>
+                }
+            }
         </div>
     </div>
+    <br />
+    @if (Home.IsStaff(User))
+    {
+        <div class="card">
+            <div class="card-header">
+                <h4>Staff Utilities</h4>
+            </div>
+            <div class="card-body">
+                <div class="col-sm"><a href="/Roles/Index" class="btn btn-danger btn-block">Manage Accounts</a></div>
+            </div>
+        </div>
+        <br />
+    }
 }
 else
 {

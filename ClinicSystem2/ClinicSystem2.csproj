@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UserSecretsId>aspnet-ClinicSystem2-766A478E-F461-4A15-B96F-A03CF02C01AB</UserSecretsId>
+    <UserSecretsId>.</UserSecretsId>
   </PropertyGroup>
 
 

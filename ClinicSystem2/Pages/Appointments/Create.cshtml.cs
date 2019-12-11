@@ -36,6 +36,8 @@ namespace ClinicSystem2.Pages.Appointments
                 return Page();
             }
 
+            if (string.IsNullOrEmpty(Appointment.Patient))
+                Appointment.Patient = User.Identity.Name;
             _context.Appointment.Add(Appointment);
             await _context.SaveChangesAsync();
 
