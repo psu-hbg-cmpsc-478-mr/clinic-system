@@ -36,6 +36,9 @@ namespace ClinicSystem2.Pages.Appointments
                 return Page();
             }
 
+            if (Appointment.Start - DateTime.Now < TimeSpan.FromHours(24))
+                return Page();
+
             if (string.IsNullOrEmpty(Appointment.Patient))
                 Appointment.Patient = User.Identity.Name;
             _context.Appointment.Add(Appointment);
